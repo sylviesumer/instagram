@@ -2,6 +2,7 @@ import { FlatList, View, Text } from "react-native";
 import { getImageFromId } from '../utils/api';
 import Card from "./Card";
 import { router } from "expo-router";
+import { useState } from "react";
 
 const keyExtractor = ({ id }) => id.toString();
 

@@ -2,13 +2,14 @@ import { ActivityIndicator, StyleSheet, ScrollView, View, Text } from 'react-nat
 import { useQuery } from '@tanstack/react-query';
 import { fetchImages } from '../services/imagesService';
 import CardList from '../components/CardList';
+import { useState } from 'react';
 
 
-export default function HomeScreen({style, commentsForItem=[], onPressComments}) {
+export default function HomeScreen() {
   const { data:items=[], error, isLoading } = useQuery({
     queryKey: ['images'],
     queryFn: fetchImages,
-  })
+  });
   
   if (isLoading) {
     return <ActivityIndicator size="large" />
@@ -19,7 +20,7 @@ export default function HomeScreen({style, commentsForItem=[], onPressComments})
   }
 
   return (
-    <CardList items={items} commentsForItem={commentsForItem} onPressComments={onPressComments} />
+    <CardList items={items} />
   );
 }
 
